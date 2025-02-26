@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Backend do MySQL
-        'NAME': 'ecommerce_meteora',     # Nome do banco de dados
+        'NAME': 'ac_bank',     # Nome do banco de dados
         'USER': str(os.getenv('USER')),                # Usuário do MySQL
         'PASSWORD': str(os.getenv('PASSWORD')),              # Senha do MySQL
         'HOST': 'localhost',                  # Host (use 'localhost' para desenvolvimento)
