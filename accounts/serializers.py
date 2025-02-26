@@ -9,24 +9,31 @@ class ClienteSerializer(serializers.ModelSerializer):
 class AgenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Agencia
-        field = '__all__'
+        fields = '__all__'
         
 class ColaboradorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Colaborador
-        field = '__all__'
+        fields = '__all__'
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
-        field = '__all__'
+        fields = '__all__'
 
 class TransacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transacao
-        field = '__all__'
+        fields = '__all__'
         
 class ContaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conta
-        field = '__all__'
+        fields = '__all__'
+
+class ListaColaboradorAgenciaSerializer(serializers.ModelSerializer):
+    colaborador_nome = serializers.ReadOnlyField(source='colaborador.nome')
+
+    class Meta:
+        model = Colaborador
+        fields = ['colaborador_nome']
