@@ -1,5 +1,6 @@
 from rest_framework import viewsets, generics, filters
-from accounts.serializers import ClienteSerializer, AgenciaSerializer, ColaboradorSerializer, ProdutoSerializer, TransacaoSerializer, ContaSerializer, ListaColaboradorAgenciaSerializer
+from accounts.serializers import ClienteSerializer, AgenciaSerializer, ColaboradorSerializer, ProdutoSerializer, TransacaoSerializer, ContaSerializer, AgenciaDetalhesSerializer\
+,ClienteContaSerializer, ContaTransacoesSerializer
 from accounts.models import Cliente, Agencia, Colaborador, Produto, Transacao, Conta
 
 class ClienteViewSet(viewsets.ModelViewSet):
@@ -35,3 +36,15 @@ class ListaColaboradorAgencia(generics.RetrieveAPIView):
         colaborador = Colaborador.objects.get(id=self.kwargs['pk'])
         # Retornar a agência associada ao colaborador
         return colaborador.agencia
+
+class AgenciaDetalhesView(generics.RetrieveAPIView):
+    queryset = Agencia.objects.all()
+    serializer_class = AgenciaDetalhesSerializer
+
+class ClienteContaViewSet(generics.RetrieveAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteContaSerializer
+    
+class ContaTransacoesViewSet(generics.RetrieveAPIView):
+    queryset = Conta.objects.all()
+    serializer_class = ContaTransacoesSerializer
